@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KhachHangController;
 use App\Http\Controllers\SanPhamController;
 use Illuminate\Support\Facades\Route;
@@ -15,9 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [HomeController::class, 'index']);
 //Sử dụng Route để trỏ đến view
 //Cách 1:
     // Route::get('/hello',function() {
@@ -43,4 +42,4 @@ Route::get('/', function () {
         Route::post('/post_khach_hang', [KhachHangController::class, 'postKhachHang']);
 
         Route::get('/edit_khach_hang/{id}', [KhachHangController::class, 'suaKhachHang']);
-        Route::post('/update_khach_hang/{id}', [KhachHangController::class, 'updateKhachHang']);
+        Route::post('/update_khach_hang', [KhachHangController::class, 'updateKhachHang']);

@@ -14,7 +14,7 @@
 <body>
     <h1 class="text-center bg-secondary mt-5 p-3 text-light mb-3"><?= $title ?></h1>
     <div class="container">
-        <form action="" method="post">
+        <form action="/update_khach_hang" method="post">
             <div class="row">
                 <div class="mb-3 col">
                     <label class="form-label">Mã khách hàng</label>
