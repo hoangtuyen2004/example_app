@@ -61,13 +61,6 @@
             <p>Điều kiện sai</p>
         @endif
     {{-- Câu lệnh if-elseif --}}
-        @if($dk1)
-        
-        @elseif($dk2)
-
-        @else
-        
-        @endif
 
 @endsection
 

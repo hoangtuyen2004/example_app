@@ -38,8 +38,8 @@ Route::get('/', [HomeController::class, 'index']);
         Route::get('/san_pham', [SanPhamController::class, 'index']);
         Route::get('/khach_hang', [KhachHangController::class, 'index']);
         
-        Route::get('/add_khach_hang',[KhachHangController::class, 'themKhachHang']);
+        Route::get('/add_khach_hang',[HomeController::class, 'addKhachHang']);
         Route::post('/post_khach_hang', [KhachHangController::class, 'postKhachHang']);
 
-        Route::get('/edit_khach_hang/{id}', [KhachHangController::class, 'suaKhachHang']);
+        Route::get('/edit_khach_hang', [HomeController::class, 'updateKhachHang']);
         Route::post('/update_khach_hang', [KhachHangController::class, 'updateKhachHang']);

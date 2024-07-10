@@ -1,1 +1,3 @@
-<h1>Client sidebar</h1>
+<div class="bg-info px-5 py-3">
+
+</div>

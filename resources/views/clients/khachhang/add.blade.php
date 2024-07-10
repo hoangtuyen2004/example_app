@@ -1,18 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.client')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
-</head>
+{{-- TITLE --}}
+@section('title')
+    {{$title}}
+@endsection
 
-<body>
-    <h1 class="text-center bg-primary mt-5 p-3 text-light mb-3"><?= $title ?></h1>
+{{-- CSS --}}
+@section('css')
+    
+@endsection
+
+{{-- CONTENT --}}
+@section('content')
+<h1 class="bg-secondary px-5 py-3 text-light mb-5 text-center">{{$text}}</h1>
     <div class="container">
         <form action="/post_khach_hang" method="post">
             <div class="row">
@@ -59,10 +59,13 @@
                 <button class="btn btn-primary w-50">Thêm khách hàng</button>
             </div>
             <div class="container d-flex justify-content-center mb-3">
-                <a href="/khach_hang" class="btn btn-success w-25">Quay lại</a>
+                <a href="/" class="btn btn-success w-25">Quay lại</a>
             </div>
         </form>
     </div>
-</body>
+@endsection
 
-</html>
+{{-- JavaScript --}}
+@section('js')
+    
+@endsection
