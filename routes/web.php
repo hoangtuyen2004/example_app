@@ -1,8 +1,8 @@
 <?php
 
+use App\Http\Controllers\admins\SanPhamController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KhachHangController;
-use App\Http\Controllers\SanPhamController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,7 +35,7 @@ Route::get('/', [HomeController::class, 'index']);
         // Route::view('/hello','xinchao', ['title'=>'Chào Tuyến Đẹp zai', 'text'=>'I needs more power']);
 
 // Tạo Route trỏ đến hàm trong controller
-        Route::get('/san_pham', [SanPhamController::class, 'index']);
+        // Route::get('/san_pham', [SanPhamController::class, 'index']);
         Route::get('/khach_hang', [KhachHangController::class, 'index']);
         
         Route::get('/add_khach_hang',[HomeController::class, 'addKhachHang']);
@@ -43,3 +43,5 @@ Route::get('/', [HomeController::class, 'index']);
 
         Route::get('/edit_khach_hang', [HomeController::class, 'updateKhachHang']);
         Route::post('/update_khach_hang', [KhachHangController::class, 'updateKhachHang']);
+
+        Route::resource('sanpham', SanPhamController::class);
