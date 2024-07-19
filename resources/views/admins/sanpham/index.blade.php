@@ -12,7 +12,21 @@
     <div class="card">
         <h4 class="card-header">{{ $title }}</h4>
         <div class="card-body">
-            <a href="{{ route('sanpham.create') }}" class="btn btn-success mb-3">Thêm sản phẩm</a>
+            <div class="d-flex justify-content-between">
+                <a href="{{ route('sanpham.create') }}" class="btn btn-success mb-3">Thêm sản phẩm</a>
+                <form action="{{ route('sanpham.index') }}" method="get">
+                    @csrf
+                    <div class="input-group">
+                        <select name="selectTrangThai" class="form-select text-center" id="">
+                            <option value="">Trạng thái</option>
+                            <option value="1">Hiển thị</option>
+                            <option value="0">Ẩn</option>
+                        </select>
+                        <input type="text" class="form-control" name="search" placeholder="Tìm kiếm">
+                        <button type="submit" class="btn btn-warning text-center text-light">Tìm kiếm...</button>
+                    </div>
+                </form>
+            </div>
             
             {{-- Hiển thị thông báo --}}
             @if (session('success'))
@@ -50,11 +64,17 @@
                             <td>{{ $sanPham->trang_thai == 1 ? 'Hiển thị' : 'Ẩn' }}</td>
                             <td>
                                 <a href="{{ route('sanpham.edit', $sanPham->id) }}" class="btn btn-warning">Sửa</a>
+                                <form action="{{ route('sanpham.destroy', $sanPham->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Bạn có chắc muốn xóa')">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Xóa</button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
+                {{ $listSanPham->links('pagination::bootstrap-5')}}
         </div>
     </div>
 @endsection
