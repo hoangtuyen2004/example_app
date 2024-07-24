@@ -45,3 +45,6 @@ Route::get('/', [HomeController::class, 'index']);
         Route::post('/update_khach_hang', [KhachHangController::class, 'updateKhachHang']);
 
         Route::resource('sanpham', SanPhamController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

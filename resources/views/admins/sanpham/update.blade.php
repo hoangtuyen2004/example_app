@@ -20,7 +20,6 @@
                                 cho mục đích bảo mật
                 --}}
                 @csrf
-
                 @method('PUT')
 
                 <div class="mb-3">
