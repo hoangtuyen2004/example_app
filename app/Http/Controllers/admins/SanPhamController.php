@@ -4,8 +4,10 @@ namespace App\Http\Controllers\admins;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\SanPhamRequest;
+use App\Mail\MailConfirm;
 use App\Models\SanPham;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 
 class SanPhamController extends Controller
@@ -15,6 +17,7 @@ class SanPhamController extends Controller
      */
     protected $sanphams;
     public function __construct() {
+        // $this->middleware('auth');
         $this->sanphams = new SanPham();
     }
     public function index(Request $request)
@@ -49,7 +52,7 @@ class SanPhamController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(SanPhamRequest $request)
+    public function store(Request $request)
     {
         if ($request->isMethod('POST')) {
             $params = $request->except('_token');
@@ -64,7 +67,10 @@ class SanPhamController extends Controller
 
             $params['hinh_anh'] = $filename;
 
-            $this->sanphams->createSanPham($params);
+            $sanPham =  SanPham::query()->create($params);
+            // Sau khi thêm sản phẩm thành công thì gửi mail thông báo và kèm theo thông tin về sản phẩm đó
+            // to(<mail người nhận>)
+            // Mail::to('tuyenhdph40250@fpt.edu.vn')->send(new MailConfirm($sanPham));
 
             return redirect()->route('sanpham.index')->with('success', 'Thêm sản phầm thành công!');
         }

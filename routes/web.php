@@ -3,6 +3,7 @@
 use App\Http\Controllers\admins\SanPhamController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\KhachHangController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [HomeController::class, 'index']);
+// Route::get('/', [HomeController::class, 'index']);
 //Sử dụng Route để trỏ đến view
 //Cách 1:
     // Route::get('/hello',function() {
@@ -45,6 +46,6 @@ Route::get('/', [HomeController::class, 'index']);
         Route::post('/update_khach_hang', [KhachHangController::class, 'updateKhachHang']);
 
         Route::resource('sanpham', SanPhamController::class);
-Auth::routes();
-
+        Auth::routes();
+        Route::get('/', [HomeController::class, 'index']);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
